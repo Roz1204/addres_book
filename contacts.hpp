@@ -168,49 +168,49 @@ void init()
             obj.email = email;
             contactBook.push_back(obj);
         }
-
-        std::string function = "";
-        std::cout << "tame action:\n";
-        std::cout << "displayContact\n";
-        std::cout << "search\n";
-        std::cout << "removeContacn\n";
-        std::cout << "updateContact\n";
-        std::cout << "addContact \n";
-        std::cin >> function;
-
-        if(function == "displayContact")
-        {
-            displayContacts(contactBook);
-        }
-        else if(function == "search")
-        {
-            std::string name = "";
-            std::cout << "enter the searcher's name: ";
-            std::cin >> name;
-            search(contactBook, name);
-        }
-        else if(function == "removeContacn")
-        {
-            std::string name = "";
-            std::cout << "enter the name of the person to be removed: ";
-            std::cin >> name;
-            removeContact(contactBook, name);
-        }
-        else if(function == "updateContact")
-        {
-            std::string name = "";
-            std::cout << "enter the name of the person to be update: ";
-            std::cin >> name;
-            updateContact(contactBook, name);
-        }
-        else if(function == "addContact")
-        {
-            addContact(contactBook);
-        }
-        else
-        {
-            std::cout << "there is no action" << std::endl;
-        }
+        
+        int number = 0;
+        do
+        { 
+            std::cout << "select the action by selecting the number: \n";
+            std::cout << "1. displayContact\n";
+            std::cout << "2. search\n";
+            std::cout << "3. removeContacn\n";
+            std::cout << "4. updateContact\n";
+            std::cout << "5. addContact \n";
+            std::cout << "6. exit \n";
+            std::cin >> number;
+        
+            if(number == 1)
+            {
+                displayContacts(contactBook);
+            }
+            else if(number == 2)
+            {
+                std::string name = "";
+                std::cout << "enter the searcher's name: ";
+                std::cin >> name;
+                search(contactBook, name);
+            }
+            else if(number == 3)
+            {
+                std::string name = "";
+                std::cout << "enter the name of the person to be removed: ";
+                std::cin >> name;
+                removeContact(contactBook, name);
+            }
+            else if(number == 4)
+            {
+                std::string name = "";
+                std::cout << "enter the name of the person to be update: ";
+                std::cin >> name;
+                updateContact(contactBook, name);
+            }
+            else if(number == 5)
+            {
+                addContact(contactBook);
+            }
+        } while(number != 6);
     }
     else
     {
