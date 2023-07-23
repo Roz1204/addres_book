@@ -9,7 +9,7 @@ At the end of the program, a file called "data.txt" will be given, where the dat
 
 If the data in the file is not entered, the program will give you the option to edit or remove the data.
 
-Then the program will be ready to work, and a list will be given in the panel with which you can:
+Then the program will be ready to work, and a list will be given in the panel with which you can.
 0.  ofstream_data
     Saves all data to a file (not available in the console) .
 1.  displayContact
