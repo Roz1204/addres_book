@@ -23,7 +23,7 @@ int Address_Book::search(std::string& name)
     return x;
 }
 
-int Address_Book::displayContacts() 
+int Address_Book::display_contacts() 
 {
     std::cout << "Contact List:\n";
     for (int i = 0; i < contacts.size(); ++i) 
@@ -58,7 +58,7 @@ void ofstream_data(const std::vector<Contact*>& contacts)
     out.close();
 }
 
-int Address_Book::removeContact(const std::string& name) 
+int Address_Book::remove_contact(const std::string& name) 
 {
     for (int i = 0; i < contacts.size(); ++i) 
     {
@@ -80,36 +80,36 @@ int Address_Book::removeContact(const std::string& name)
     return -1;
 }
 
-int Address_Book::updateContact(const std::string& name)
+int Address_Book::update_contact(const std::string& name)
 {
     for(int i = 0; i < contacts.size(); ++i)
     {
         if(contacts[i]->get_name() == name)
         {            
-            std::string phoneNumber;
+            std::string phone_number;
             bool b = true;
             do
             {
                 std::cout << "Enter the contact phone number: ";
-                std::cin >> phoneNumber;
+                std::cin >> phone_number;
 
-                for(int i = 4; i < phoneNumber.size(); ++i)
+                for(int i = 4; i < phone_number.size(); ++i)
                 {
-                    if(phoneNumber[i] < '0' && phoneNumber[i] > '9')
+                    if(phoneNumber[i] < '0' && phone_number[i] > '9')
                     {
                         b = false;
                     }
                 }
-            } while (phoneNumber.substr(0, 4) != "+374" || phoneNumber.size() != 12 || !b );
+            } while (phone_number.substr(0, 4) != "+374" || phone_number.size() != 12 || !b );
         
-            contacts[i]->set_phone(phoneNumber);
-            std::string newEmail;
+            contacts[i]->set_phone(phone_number);
+            std::string new_email;
             do
             {
                 std::cout << "Enter a new email: ";
-                std::cin >> newEmail;
-            } while (newEmail.substr(newEmail.size() - 10) != "@gmail.com" || newEmail.size() < 10);
-            contacts[i]->set_email(newEmail);
+                std::cin >> new_email;
+            } while (new_email.substr(new_email.size() - 10) != "@gmail.com" || new_email.size() < 10);
+            contacts[i]->set_email(new_email);
 
             std::cout << "Contact updated successfully!\n\n";
             ofstream_data(contacts);
@@ -126,41 +126,41 @@ int Address_Book::updateContact(const std::string& name)
     return -1;
 }
 
-int  Address_Book::addContact() 
+int  Address_Book::add_contact() 
 {
-    Contact newContact;
+    Contact new_contact;
     std::cout << "Enter a contact name: ";
     std::string name;
     std::cin >> name;
-    newContact.set_name(name);
+    new_contact.set_name(name);
 
-    std::string phoneNumber;
+    std::string phone_number;
     bool b = true;
     do
     {
         std::cout << "Enter the contact phone number: ";
-        std::cin >> phoneNumber;
+        std::cin >> phone_number;
 
-        for(int i = 4; i < phoneNumber.size(); ++i)
+        for(int i = 4; i < phone_number.size(); ++i)
         {
-            if(phoneNumber[i] < '0' && phoneNumber[i] > '9')
+            if(phone_number[i] < '0' && phone_number[i] > '9')
             {
                 b = false;
             }
         }
-    } while (phoneNumber.substr(0, 4) != "+374" || phoneNumber.size() != 12 || !b );
+    } while (phone_number.substr(0, 4) != "+374" || phone_number.size() != 12 || !b );
  
-    newContact.set_phone(phoneNumber);
+    new_contact.set_phone(phone_number);
         
-    std::string newEmail;
+    std::string new_email;
     do
     {
         std::cout << "Enter new email: ";
-        std::cin >> newEmail;
-    } while (newEmail.substr(newEmail.size() - 10) != "@gmail.com" || newEmail.size() < 10);
-    newContact.set_email(newEmail);
+        std::cin >> new_email;
+    } while (new_email.substr(new_email.size() - 10) != "@gmail.com" || new_email.size() < 10);
+    new_contact.set_email(new_email);
 
-    contacts.push_back(&newContact);
+    contacts.push_back(&new_contact);
     std::cout << "Contact added successfully!\n\n";
     ofstream_data(contacts);
 
@@ -228,7 +228,7 @@ void Address_Book::init()
                 std::string name = "";
                 std::cout << "Enter the name of the person to be removed: ";
                 std::cin >> name;
-                int x = removeContact(name);
+                int x = remove_contact(name);
                 if(x == 2) {
                     number = 6;
                 } else if(x == -1) {
@@ -247,7 +247,7 @@ void Address_Book::init()
                 std::string name = "";
                 std::cout << "Enter the name of the person to be update: ";
                 std::cin >> name;
-                int x = updateContact(name);
+                int x = update_contact(name);
                 if(x == 2) {
                     number = 6;
                 } else if(x == -1) {
@@ -263,7 +263,7 @@ void Address_Book::init()
             }
             else if(number == 5)
             {
-                int x = addContact();
+                int x = add_contact();
                 if(x == 2) {
                     number = 6;
                 }
