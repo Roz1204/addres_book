@@ -9,10 +9,10 @@ private:
     std::vector<Contact*> contacts;
 public:
     int search(std::string& name);
-    int displayContacts();
-    int removeContact(const std::string& name);
-    int updateContact(const std::string& name);
-    int addContact();
+    int display_contacts();
+    int remove_contact(const std::string& name);
+    int update_contact(const std::string& name);
+    int add_contact();
     void init();
 };
 
